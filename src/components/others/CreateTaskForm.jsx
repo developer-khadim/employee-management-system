@@ -7,41 +7,41 @@ const CreateTaskForm = () => {
         <div className="w-1/2">
           <div className="mb-4">
             <label
-              className="block text-sm font-medium text-emerald-500 dark:text-gray-200 mb-1"
+              className="block text-sm font-medium text-emerald-500 mb-1"
               htmlFor="task-title"
             >
               Task Title
             </label>
             <input
               id="task-title"
-              className="text-sm py-2 px-3 w-full rounded border border-emerald-500 dark:border-gray-600 bg-transparent dark:bg-[#23272f] text-white dark:text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
+              className="text-sm py-2 px-3 w-full rounded border border-gray-500 bg-transparent text-white focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
               type="text"
               placeholder="Enter Task Title"
             />
           </div>
           <div className="mb-4">
             <label
-              className="block text-sm font-medium text-emerald-500 dark:text-gray-200 mb-1"
+              className="block text-sm font-medium text-emerald-500 mb-1"
               htmlFor="due-date"
             >
               Due Date
             </label>
             <input
               id="due-date"
-              className="text-sm py-2 px-3 w-full rounded border border-emerald-300  bg-[#2c2c2c] dark:bg-[#23272f] text-gray-400 dark:text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
+              className="text-sm py-2 px-3 w-full rounded border border-gray-500 bg-transparent text-gray-400 focus:ring-2 focus:border-none focus:ring-emerald-400 focus:outline-none transition"
               type="date"
             />
           </div>
           <div className="mb-4">
             <label
-              className="block text-sm font-medium text-emerald-500 dark:text-gray-200 mb-1"
+              className="block text-sm font-medium text-emerald-500 mb-1"
               htmlFor="assign-to"
             >
               Assign To
             </label>
             <input
               id="assign-to"
-              className="text-sm py-2 px-3 w-full rounded border bg-transparent border-emerald-300 dark:border-gray-600  text-white dark:text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
+              className="text-sm py-2 px-3 w-full rounded border bg-transparent border-gray-500 text-white focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
               type="text"
               placeholder="Employee name"
             />
@@ -55,7 +55,7 @@ const CreateTaskForm = () => {
             </label>
             <select
               id="category"
-              className="text-sm py-2 px-3 w-full rounded border border-emerald-300 dark:border-gray-600 bg-[#2c2c2c] text-white  dark:text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
+              className="text-sm py-2 px-3 w-full rounded border border-gray-500 bg-[#2c2c2c] text-white focus:ring-2 focus:ring-emerald-400 focus:outline-none transition"
             >
               <option value="">Select a category</option>
               <option value="design">Design</option>
@@ -70,14 +70,14 @@ const CreateTaskForm = () => {
 
         <div className="w-2/5 flex flex-col items-start justify-center ">
           <label
-            className="block text-sm font-medium text-emerald-500 dark:text-gray-200 mb-1"
+            className="block text-sm font-medium text-emerald-500 mb-1"
             htmlFor="description"
           >
             Description
           </label>
           <textarea
             id="description"
-            className="w-full h-[195px] text-sm py-2 px-3 rounded border border-emerald-300 dark:border-gray-600 bg-[#2c2c2c] dark:bg-[#23272f] text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition resize-none mb-4"
+            className="w-full h-[195px] text-sm py-2 px-3 rounded border border-gray-500 bg-transparent text-gray-100 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition resize-none mb-4"
             placeholder="Enter Task Description"
             rows="8"
           ></textarea>
