@@ -7,14 +7,21 @@ const Login = ({ handleLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log("Email", email);
-    console.log("Password", password);
-    handleLogin(email, password);
+const submitHandler = async (e) => {
+  e.preventDefault();
+
+  setIsLoading(true);
+  try {
+    await handleLogin(email, password);
+  } catch (error) {
+    console.error("Login failed:", error);
+  } finally {
+    setIsLoading(false);
     setEmail("");
     setPassword("");
-  };
+  }
+};
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md">

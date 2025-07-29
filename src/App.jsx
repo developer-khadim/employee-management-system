@@ -5,31 +5,55 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Auth/Login';
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
 import AdminDashboard from './components/Dashboard/AdminDashboard';
-import SetLocalStorage, { GetLocalStorage } from './utils/localStorage';
+import SetLocalStorage from './utils/localStorage';
 import { AuthContext } from './context/AuthProvider';
 
 function App() {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext); 
 
   useEffect(() => {
-    SetLocalStorage(); // set only once when app loads
+    SetLocalStorage();
   }, []);
 
-  const handleLogin = (email, password) => {
-    // hardcoded logic or fetch from localStorage
-    if (email === "khadim@gmail.com" && password === "123") {
-      toast.success("Welcome Admin!");
-      setUser({ role: "admin", email });
-    } else if (email === "emp@gmail.com" && password === "123") {
-      toast.success("Welcome Employee!");
-      setUser({ role: "employee", email });
-    } else {
-      toast.error("Invalid email or password!");
+  useEffect(() => {
+    if (authData) {
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (loggedInUser) {
+        setUser(loggedInUser);
+      }
     }
-  };
+  }, [authData]);
 
-  const data = useContext(AuthContext)
-  console.log(data)
+  const handleLogin = (email, password) => {
+    if (!authData) {
+      toast.error("Auth data not loaded");
+      return;
+    }
+
+    // Check Admin
+    const admin = authData.admin?.find((a) => a.email === email && a.password === password);
+    if (admin) {
+      const adminUser = { role: "admin", email };
+      setUser(adminUser);
+      localStorage.setItem('loggedInUser', JSON.stringify(adminUser));
+      toast.success("Welcome Admin!");
+      return;
+    }
+
+    // Check Employee
+    const employee = authData.employees?.find((e) => e.email === email && e.password === password);
+    if (employee) {
+      const employeeUser = { role: "employee", email };
+      setUser(employeeUser);
+      localStorage.setItem('loggedInUser', JSON.stringify(employeeUser));
+      toast.success("Welcome Employee!");
+      return;
+    }
+
+    // Invalid credentials
+    toast.error("Invalid Credentials");
+  };
 
   return (
     <>
