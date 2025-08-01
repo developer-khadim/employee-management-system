@@ -11,14 +11,17 @@ html {
   box-sizing: inherit;
 }
 body {
-  @apply bg-gray-100 text-gray-900 antialiased font-sans;
-  background-color: #000;
+  @apply bg-[#1c1c1c] text-white antialiased font-sans;
 }
 
-#task-list::-webkit-scrollbar {
+#task-list::-webkit-scrollbar,
+#All-tasks::-webkit-scrollbar {
   display: none;
 }
 
-#All-tasks::-webkit-scrollbar{
-  display:none;
+/* Improve scrollbar hiding for cross-browser compatibility */
+#task-list,
+#All-tasks {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
